@@ -22,12 +22,25 @@ import kr.ac.hansung.cse.repo.ProductRepository;
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/vi")
 public class ProductController {
 
 	@Autowired
 	ProductRepository repository;
 
+	@PostMapping(value = "/Products")
+	public ResponseEntity<Product> postProduct(@RequestBody Product product) {
+		try {
+			Product _Product = repository.save(new Product(
+					product.getName(), product.getCategory(), product.getPrice(), 
+					product.getUnitInStock(), product.getDescription()
+					));
+			return new ResponseEntity<>(_Product, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+	
 	@GetMapping("/Products")
 	public ResponseEntity<List<Product>> getAllProducts() {
 		List<Product> Products = new ArrayList<>();
@@ -54,18 +67,40 @@ public class ProductController {
 		}
 	}
 
-	@PostMapping(value = "/Products")
-	public ResponseEntity<Product> postProduct(@RequestBody Product Product) {
+	@GetMapping(value = "Products/category/{category}")
+	public ResponseEntity<List<Product>> findByAge(@PathVariable String category) {
 		try {
-			Product _Product = repository.save(new Product(Product.getName(), Product.getId()));
-			return new ResponseEntity<>(_Product, HttpStatus.CREATED);
+			List<Product> Products = repository.findByCategory(category);
+
+			if (Products.isEmpty()) {
+				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			}
+			return new ResponseEntity<>(Products, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
+			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+		}
+	}
+
+	@PutMapping("/Products/{id}")
+	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product Product) {
+		Optional<Product> ProductData = repository.findById(id);
+
+		if (ProductData.isPresent()) {
+			Product _Product = ProductData.get();
+			_Product.setName(Product.getName());
+			_Product.setCategory(Product.getCategory());
+			_Product.setPrice(Product.getPrice());
+			_Product.setUnitInStock(Product.getUnitInStock());
+			_Product.setDescription(Product.getDescription());
+			
+			return new ResponseEntity<>(repository.save(_Product), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
 	@DeleteMapping("/Products/{id}")
-	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") long id) {
+	public ResponseEntity<HttpStatus> deleteProduct(@PathVariable("id") int id) {
 		try {
 			repository.deleteById(id);
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -85,32 +120,4 @@ public class ProductController {
 
 	}
 
-	@GetMapping(value = "Products/age/{age}")
-	public ResponseEntity<List<Product>> findByAge(@PathVariable int age) {
-		try {
-			List<Product> Products = repository.findByAge(age);
-
-			if (Products.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			return new ResponseEntity<>(Products, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
-		}
-	}
-
-	@PutMapping("/Products/{id}")
-	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product Product) {
-		Optional<Product> ProductData = repository.findById(id);
-
-		if (ProductData.isPresent()) {
-			Product _Product = ProductData.get();
-			_Product.setName(Product.getName());
-			_Product.setAge(Product.getAge());
-			_Product.setActive(Product.isActive());
-			return new ResponseEntity<>(repository.save(_Product), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 }

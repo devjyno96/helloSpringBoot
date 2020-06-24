@@ -43,4 +43,12 @@ public class Product implements Serializable {
 	
 	@Column(name = "description")
 	private String description;
+	
+	public Product(String name, String category, int price, int unitInStock, String description) {
+		this.name = name;
+		this.category = category;
+		this.price = price;
+		this.unitInStock = unitInStock;
+		this.description = description;
+	}
 }
