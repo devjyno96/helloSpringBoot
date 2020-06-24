@@ -33,7 +33,7 @@ public class ProductController {
 		try {
 			Product _Product = repository.save(new Product(
 					product.getName(), product.getCategory(), product.getPrice(), 
-					product.getUnitInStock(), product.getDescription()
+					product.getUnitInStock(), product.getDescription(), product.getManufacturer()
 					));
 			return new ResponseEntity<>(_Product, HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -57,8 +57,8 @@ public class ProductController {
 	}
 
 	@GetMapping("/Products/{id}")
-	public ResponseEntity<Product> getProductById(@PathVariable("id") long id) {
-		Optional<Product> ProductData = repository.findById(id);
+	public ResponseEntity<Product> getProductById(@PathVariable("id") int id) {
+		Optional<Product> ProductData = Optional.of(repository.findById(id));
 
 		if (ProductData.isPresent()) {
 			return new ResponseEntity<>(ProductData.get(), HttpStatus.OK);
@@ -82,8 +82,8 @@ public class ProductController {
 	}
 
 	@PutMapping("/Products/{id}")
-	public ResponseEntity<Product> updateProduct(@PathVariable("id") long id, @RequestBody Product Product) {
-		Optional<Product> ProductData = repository.findById(id);
+	public ResponseEntity<Product> updateProduct(@PathVariable("id") int id, @RequestBody Product Product) {
+		Optional<Product> ProductData = Optional.of(repository.findById(id));
 
 		if (ProductData.isPresent()) {
 			Product _Product = ProductData.get();
