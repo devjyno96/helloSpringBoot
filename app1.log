@@ -429,3 +429,30 @@ Identify and stop the process that's listening on port 9090 or configure this ap
 2020-06-23 20:54:51.455  INFO 19520 --- [http-nio-9090-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-06-23 20:54:51.456  INFO 19520 --- [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-06-23 20:54:51.462  INFO 19520 --- [http-nio-9090-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-06-24 18:44:02.222  INFO 13796 --- [main] k.a.h.cse.HelloSpringBootApplication     : Starting HelloSpringBootApplication on DESKTOP-UGJ64U6 with PID 13796 (C:\Project\workspace\helloSpringBoot\target\classes started by jinho in C:\Project\workspace\helloSpringBoot)
+2020-06-24 18:44:02.224  INFO 13796 --- [main] k.a.h.cse.HelloSpringBootApplication     : No active profile set, falling back to default profiles: default
+2020-06-24 18:44:03.726  INFO 13796 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFERRED mode.
+2020-06-24 18:44:03.831  INFO 13796 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93ms. Found 2 JPA repository interfaces.
+2020-06-24 18:44:04.529  INFO 13796 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2020-06-24 18:44:04.539  INFO 13796 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-06-24 18:44:04.540  INFO 13796 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.35]
+2020-06-24 18:44:04.682  INFO 13796 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-06-24 18:44:04.683  INFO 13796 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2421 ms
+2020-06-24 18:44:04.963  INFO 13796 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-06-24 18:44:05.004  INFO 13796 --- [task-1] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-06-24 18:44:05.044  WARN 13796 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-06-24 18:44:05.084  INFO 13796 --- [task-1] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.15.Final
+2020-06-24 18:44:05.158  WARN 13796 --- [main] o.s.security.core.userdetails.User       : User.withDefaultPasswordEncoder() is considered unsafe for production and is only intended for sample applications.
+2020-06-24 18:44:05.318  INFO 13796 --- [task-1] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+2020-06-24 18:44:05.427  INFO 13796 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-06-24 18:44:05.568  INFO 13796 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@715fa8c5, org.springframework.security.web.context.SecurityContextPersistenceFilter@34d480b9, org.springframework.security.web.header.HeaderWriterFilter@5e180aaf, org.springframework.security.web.csrf.CsrfFilter@2dfeb141, org.springframework.security.web.authentication.logout.LogoutFilter@1f4f0fcc, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7c5df615, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@66749eea, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@166c2c17, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@644a3add, org.springframework.security.web.session.SessionManagementFilter@44592c39, org.springframework.security.web.access.ExceptionTranslationFilter@c3719e5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6b37df8e]
+2020-06-24 18:44:05.901  INFO 13796 --- [task-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-06-24 18:44:05.931  INFO 13796 --- [task-1] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2020-06-24 18:44:06.651  INFO 13796 --- [task-1] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-06-24 18:44:06.657  INFO 13796 --- [task-1] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-06-24 18:44:06.991  INFO 13796 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-06-24 18:44:07.347  INFO 13796 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
+2020-06-24 18:44:07.430  INFO 13796 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2020-06-24 18:44:07.432  INFO 13796 --- [main] DeferredRepositoryInitializationListener : Triggering deferred initialization of Spring Data repositories…
+2020-06-24 18:44:07.641  INFO 13796 --- [main] DeferredRepositoryInitializationListener : Spring Data repositories initialized!
+2020-06-24 18:44:07.650  INFO 13796 --- [main] k.a.h.cse.HelloSpringBootApplication     : Started HelloSpringBootApplication in 5.779 seconds (JVM running for 6.295)
