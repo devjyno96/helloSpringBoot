@@ -58,7 +58,7 @@ public class ProductController {
 
 	@GetMapping("/Products/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable("id") int id) {
-		Optional<Product> ProductData = Optional.of(repository.findById(id));
+		Optional<Product> ProductData = repository.findById(id);
 
 		if (ProductData.isPresent()) {
 			return new ResponseEntity<>(ProductData.get(), HttpStatus.OK);
@@ -83,7 +83,8 @@ public class ProductController {
 
 	@PutMapping("/Products/{id}")
 	public ResponseEntity<Product> updateProduct(@PathVariable("id") int id, @RequestBody Product Product) {
-		Optional<Product> ProductData = Optional.of(repository.findById(id));
+		Optional<Product> ProductData = repository.findById(id);
+		System.out.println(ProductData.isPresent());
 
 		if (ProductData.isPresent()) {
 			Product _Product = ProductData.get();
@@ -92,7 +93,6 @@ public class ProductController {
 			_Product.setPrice(Product.getPrice());
 			_Product.setUnitInStock(Product.getUnitInStock());
 			_Product.setDescription(Product.getDescription());
-			
 			return new ResponseEntity<>(repository.save(_Product), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
