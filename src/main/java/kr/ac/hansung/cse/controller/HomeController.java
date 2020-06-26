@@ -13,7 +13,7 @@ static Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	// @GetMapping is a composed annotation that acts as a shortcut for
 	// @RequestMapping(value="/", method = RequestMethod.GET).
-	@GetMapping("/")
+	@GetMapping("/api/v1")
 	public String home(Model model) {
 
 		logger.info("Info: Calling home( )" );
@@ -24,6 +24,6 @@ static Logger logger = LoggerFactory.getLogger(HomeController.class);
 		
 		return "index";
 
-	}	
+	}
 	
 }
